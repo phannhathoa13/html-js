@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="username">Username</label><br>
+    <input type="username" id="username" name="username"><br>
+    <label for="password">Password</label><br>
+    <input type="password" id="password" name="password"><br>
+    <input type="submit" value="Submit" onclick="login()">
+    <script>
+        function login() {
+            const username = document.getElementById('username').value
+            const password = document.getElementById('password').value
+            if (isUsernameOrPasswordEmpty(username, password) == false) {
+                windowAlert("Username and Password is empty")
+            }
+            else if (isUsernameCorrertFormat(username) == false) {
+                windowAlert("Username must be nonsentive case")
+            }
+            else if (loginAccount(username, password) == false) {
+                windowAlert("Wrong username or password please try agian!")
+            }
+            else if (loginAccount(username, password) == true) {
+                windowAlert("Login SuccessFull")
+            }
+
+        }
+        function isUsernameCorrertFormat(string) {
+            if (string != string.toLocaleLowerCase()) {
+                return false
+            }
+            else {
+                return true
+            }
+        }
+
+
+        function isUsernameOrPasswordEmpty(user, pass) {
+            if (user != '' && pass != '') {
+                return user == user, pass == pass
+            }
+            else {
+                return user == user, pass = pass
+            }
+        }
+
+        function windowAlert(string) {
+            window.alert(string)
+        }
+
+        function loginAccount(user, pass) {
+            if (user != account().username && pass != account().password) {
+                return false
+            }
+            else {
+                return true;
+            }
+        }
+        function account() {
+            const account = {
+                username: "phannhathoa",
+                password: "12345"
+            }
+            return account;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

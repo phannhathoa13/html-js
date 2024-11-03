@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="loginUser.html">
+    <title>Register</title>
+</head>
+
+<body>
+    <label for="username">Username</label> <br>
+    <input type="username" id='username' name="username"><br>
+    <label for="password">Password</label><br>
+    <input type="password" id="password" name="password"><br>
+    <label for="confirmpassword">confirm password</label> <br>
+    <input type="password" id="confirmpassword" name="confirmpassword"><br>
+    <input type="submit" value="Submit" href="loginUser.html" onclick="register()"> <br>
+    <script>
+        const listAccount = []
+        function Account(user, pass) {
+            this.username = user;
+            this.password = pass;
+        }
+        function register() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value
+            const account = new Account(username, password);
+            const confirmpassword = document.getElementById('confirmpassword').value
+            if (isUsernameOrPasswordEmpty(username, password, confirmpassword) == false) {
+                windowAlert("Username or Password or Confirmpassword is empty")
+            }
+            else if (isUserCorrectSamePassword(password, confirmpassword) == false) {
+                windowAlert("Password Must The Same Confirm Password")
+            }
+            else if (typeof (Storage) === "undefined") {
+                windowAlert("Your brownser doesn't support web storage")
+            }
+            else {
+                listAccount.push(account)
+                localStorage.setItem("account", JSON.stringify(listAccount))
+                windowAlert("Register Successfull")
+                window.location = "loginUser.html"
+            }
+        }
+
+
+        function isUserCorrectSamePassword(pass, confirmpass) {
+            if (pass === confirmpass) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        function isUsernameOrPasswordEmpty(user, pass, confirmpass) {
+            if (user === '' || pass === '' || confirmpass === '') {
+                return false
+            }
+            else {
+                return true;
+            }
+        }
+        function windowAlert(string) {
+            window.alert(string)
+        }
+
+
+
+    </script>
+</body>
+
+
+
+
+
+</html>

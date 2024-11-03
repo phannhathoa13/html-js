@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="registerUserr.html">
+    <title>Login</title>
+</head>
+
+<body>
+    <label for="username">Username </label> <br>
+    <input type="username" id="username" name="username"> <br>
+    <label for="password">Password</label> <br>
+    <input type="password" id="password" name="password"><br>
+    <input type="submit" value="Submit" onclick="login()">
+    <script>
+        function login() {
+            // window.location = "registerUserr.html"
+            const listAccount = getAccountList();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            // if (isUsernameOrPasswordEmpty(username, password) == false) {
+            //     windowAlert("Username or Password is empty")
+            // }
+            // if (!checkUsernamePassword(username, password, listAccount)) {
+            //     windowAlert("Username or Password is wrong")
+            // }
+            // else {
+            //     windowAlert("Login Successfull")
+            // }
+            console.log(checkUsernamePassword(username, password, listAccount));
+        }
+
+
+        function windowAlert(string) {
+            window.alert(string);
+        }
+        function isUsernameOrPasswordEmpty(user, pass) {
+            if (user === '' || pass === '') {
+                return false
+            }
+            else {
+                return true;
+            }
+        }
+        function getAccountList() {
+            return JSON.parse(localStorage.getItem('account'))
+        }
+        function checkUsernamePassword(username, pass, list) {
+            var flag = false
+            for (let index = 0; index < list.length; index++) {
+                const user = list[index]
+                console.log(user);
+                console.log(list[index]);
+                if (user.username == username && user.password == pass) {
+                    flag = true
+                }
+            }
+            return flag
+        }
+    </script>
+</body>
+
+</html>

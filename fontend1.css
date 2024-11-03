@@ -1,0 +1,67 @@
+.header {
+    display: block;
+    background-color: grey;
+    color: white;
+    text-align: center;
+    min-height: 8vh;
+    font-size: 100px;
+}
+.nav {
+    background-color: black;
+    width: 100%;
+    padding :0;
+    overflow: hidden;
+    color: white;
+  }
+  li a:hover {
+    color: red;
+  }
+
+.container {
+    min-height: 81vh;
+    margin: 0;
+
+    .asite {
+        float: left;
+        background-color: rgb(213, 207, 207);
+        text-align: center;
+        width: 20vw;
+        margin: 0;
+        height: 79vh;
+    }
+
+    .content {
+        display: inline-block;
+        background-color: whitesmoke;
+        color: black;
+        width: 77.5vw;
+        margin: 0;
+    }
+
+}
+
+.footer {
+    display: block;
+    background-color: grey;
+    color: white;
+    min-height: 10vh;
+    font-size: 100px;
+}
+
+p {
+    text-align: center;
+    padding: 0%;
+    margin: 0%;
+}
+  li {
+    list-style-type: none;
+    float: left;
+    margin: 10px;
+  }
+  li {
+    a {
+        background-color: black;
+        color: white;
+        text-decoration: none;
+    }
+  }

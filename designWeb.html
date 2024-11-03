@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng</title>
+</head>
+
+<body>
+    <h1>Cửa Hàng</h1>
+    <div id="products">
+        <div class="product">
+            <span>Sản phẩm 1 - Giá: 100,000đ</span>
+            <button onclick="addToCart('Sản phẩm 1', 100000 )">Thêm vào giỏ</button>
+        </div>
+        <div class="product">
+            <span>Sản phẩm 2 - Giá: 200,000đ</span>
+            <button onclick="addToCart('Sản phẩm 2', 100000)">Thêm vào giỏ</button>
+        </div>
+        <div class="product">
+            <span>Sản phẩm 3 - Giá: 300,000đ</span>
+            <button onclick="addToCart('sản phẩm 3', 100000)">Thêm vào giỏ</button>
+        </div>
+    </div>
+
+    <h2>Giỏ Hàng</h2>
+    <div id="cart">
+        <ul id="cart-items"></ul>
+        <strong>Tổng tiền: <span id="total-price">0</span>đ</strong>
+    </div>
+
+    <script src="script.js"></script>
+
+
+    <script>
+        let cart = [];
+        let totalPrice = 0;
+
+        function addToCart(name, price) {
+            // Thêm sản phẩm vào giỏ hàng
+            cart.push({ name, price });
+            totalPrice += price;
+
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = '';
+
+            cart.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.textContent = `${item.name} - ${item.price}đ`;
+
+                // Thêm nút xóa
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Xóa';
+                removeButton.onclick = () => removeFromCart(index);
+                li.appendChild(removeButton);
+
+                cartItems.appendChild(li);
+            });
+
+            document.getElementById('total-price').textContent = totalPrice;
+        }
+
+        function removeFromCart(index) {
+            totalPrice -= cart[index].price;
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+    </script>
+</body>
+
+</html>

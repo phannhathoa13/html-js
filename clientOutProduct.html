@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client</title>
+    <link rel="stylesheet" href="adminAddProduct.html">
+    <style>
+        .edit-button {
+            display: block;
+            height: 18px;
+            font-size: 0.9rem;
+        }
+
+        .div {
+            display: inline-block;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="div">Name Product
+            <span id="nameProduct"></span>
+        </div>
+        <div class="div">Amount
+            <span id="amountProduct"></span>
+        </div>
+        <div class="div">Price
+            <span id="priceProduct"></span>
+        </div>
+        <div class="div" id="buttonContainer"></div>
+        <div class="div" id="buttonDelete"></div>
+    </div>
+
+
+
+
+
+
+    <script>
+        const list = JSON.parse(localStorage.getItem('products'))
+        for (let index = 0; index < list.length; index++) {
+            const element = list[index];
+            const nameDivTag = document.createElement("div")
+            const amountDivTag = document.createElement("div")
+            const priceDivTag = document.createElement("div")
+            const button = document.createElement("button");
+            const buttonDelete = document.createElement("button");
+
+            nameDivTag.textContent = element.name
+            amountDivTag.textContent = element.amount
+            priceDivTag.textContent = element.price
+
+
+            button.id = `createButton${index}`
+            buttonDelete.id = `deleteButton${index}`
+            nameDivTag.id = `tag${index}`
+            amountDivTag.id = `amount${index}`
+            priceDivTag.id = `price${index}`
+
+
+            button.textContent = 'edit';
+            buttonDelete.textContent = 'Detelte';
+            button.className = 'edit-button';
+            buttonDelete.className = 'edit-button';
+            button.onclick = () => editButton(index);
+            buttonDelete.onclick = () => { removeProduct(index) }
+            document.getElementById('nameProduct').appendChild(nameDivTag)
+            document.getElementById('amountProduct').appendChild(amountDivTag)
+            document.getElementById('priceProduct').appendChild(priceDivTag)
+            document.getElementById('buttonContainer').appendChild(button);
+            document.getElementById('buttonDelete').appendChild(buttonDelete);
+        }
+        function editButton(index) {
+            localStorage.setItem('index', index)
+            localStorage.setItem('action', 'edit')
+            window.location = "adminAddProduct.html"
+        }
+        removeProduct = (index) => {
+            for (let i = 0; i < list.length; i++) {
+                const element = list[i];
+                if (i === index) {
+                    const nameDivTag = document.getElementById(`tag${index}`)
+                    const amountDivTag = document.getElementById(`amount${index}`)
+                    const priceDivTag = document.getElementById(`price${index}`)
+                    const createButtonDom = document.getElementById(`createButton${index}`)
+                    const deleteButtonDom = document.getElementById(`deleteButton${index}`)
+                    nameDivTag.remove();
+                    amountDivTag.remove();
+                    priceDivTag.remove();
+                    createButtonDom.remove();
+                    deleteButtonDom.remove();
+
+                }
+
+
+            }
+            list.splice(index, 1)
+
+        }
+
+        function reloadProduct() {
+            for (let index = 0; index < list.length; index++) {
+                const element = list[index];
+                const nameDivTag = document.createElement("div")
+                const amountDivTag = document.createElement("div")
+                const priceDivTag = document.createElement("div")
+                nameDivTag.textContent = element.name
+                amountDivTag.textContent = element.amount
+                priceDivTag.textContent = element.price
+                document.getElementById('nameProduct').appendChild(nameDivTag)
+                document.getElementById('amountProduct').appendChild(amountDivTag)
+                document.getElementById('priceProduct').appendChild(priceDivTag)
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

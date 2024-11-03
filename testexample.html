@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>FirstName: </td>
+            <td id="fname">hehe</td>
+        </tr>
+        <tr>
+            <td>LirstName: </td>
+            <td id="lname">hehe</td>
+        </tr>
+        <tr>
+            <td>Age: </td>
+            <td id="age">hehe</td>
+        </tr>
+        <tr>
+            <td>Height: </td>
+            <td id="height">hehe</td>
+        </tr>
+        <tr>
+            <td>Weight: </td>
+            <td id="weight">hehe</td>
+        </tr>
+    </table>
+    <button type="button" onclick="listStudentDate(phanNhatHoa)">Phan Nhat Hoa</button>
+    <button type="button" onclick="listStudentDate(tranMinhTan)">Tran Minh Tan</button>
+    <button type="button" onclick="listStudentDate(voDinhBaoNghi)">Vo Dinh Bao Nghi</button>
+    <button type="button" onclick="listStudentDate(nguyenHoangLong)">Nguyen Hoang Long</button>
+    <script>
+        function Person(first, last, age, height, weight) {
+            this.firstName = first;
+            this.lastName = last;
+            this.age = age;
+            this.height = height;
+            this.weight = weight;
+        }
+        const phanNhatHoa = new Person("Phan", "Nhat Hoa", 20, 173, 80)
+        const tranMinhTan = new Person("Tran", "Minh Tan", 25, 170, 75)
+        const voDinhBaoNghi = new Person("Vo", "Dinh Bao Nghi", 24, 180, 100)
+        const nguyenHoangLong = new Person("Nguyen", "Hoang Long", 21, 183, 110)
+        function listStudentDate(string) {
+            document.getElementById('fname').innerHTML = string.firstName
+            document.getElementById('lname').innerHTML = string.lastName
+            document.getElementById('age').innerHTML = string.age
+            document.getElementById('height').innerHTML = string.height
+            document.getElementById('weight').innerHTML = string.weight
+        }
+    </script>
+</body>
+
+</html>
