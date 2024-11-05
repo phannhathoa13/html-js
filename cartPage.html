@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CartPage</title>
+</head>
+
+<body>
+    <style>
+        .edit-button {
+            display: block;
+            height: 18px;
+            font-size: 0.9rem;
+        }
+
+        .div {
+            display: inline-block;
+            margin: 5px;
+        }
+    </style>
+    <div id="container">
+        <div class="div">Name Product
+            <span id="nameProduct"></span>
+        </div>
+        <div class="div">Amount
+            <span id="amountProduct"></span>
+        </div>
+        <div class="div">Price
+            <span id="priceProduct"></span>
+        </div>
+        <div id="totalPrice"></div>
+        <div class="div" id="buttonContainer"></div>
+        <div class="div" id="buttonDelete"></div>
+        <div class="div" id="addButton"></div>
+    </div>
+</body>
+<script>
+    cartList = getCartList();
+
+    for (let index = 0; index < cartList.length; index++) {
+        const element = cartList[index];
+        const nameDivTag = document.createElement("div")
+        const amountDivTag = document.createElement("div")
+        const priceDivTag = document.createElement("div")
+
+
+        nameDivTag.id = `tag${index}`
+        amountDivTag.id = `amount${index}`
+        priceDivTag.id = `price${index}`
+
+        nameDivTag.textContent = element.name
+        amountDivTag.textContent = element.amount
+        priceDivTag.textContent = element.price;
+
+        document.getElementById('nameProduct').appendChild(nameDivTag)
+        document.getElementById('amountProduct').appendChild(amountDivTag)
+        document.getElementById('priceProduct').appendChild(priceDivTag)
+
+    }
+    const totalPriceDOM = document.createElement("p")
+    totalPriceDOM.id = 'total-price'
+    totalPriceDOM.textContent = `Total Price: $ ${getTotalPrice()}`;
+    document.getElementById('totalPrice').appendChild(totalPriceDOM)
+
+
+    function getCartList() {
+        cart = JSON.parse(localStorage.getItem('cart'));
+        list = JSON.parse(localStorage.getItem('products'))
+        cartList = [];
+        cart.forEach(element => {
+            let productCart = getProdcutByIndex(element.index)
+            productCart.amount = element.amount
+            cartList.push(productCart)
+
+        });
+
+        return cartList;
+    }
+
+    function getTotalPrice() {
+        let total = 0;
+        cartList.forEach((product) => {
+            total += Number(product.price) * Number(product.amount)
+        })
+        return total
+    }
+
+
+    function getProdcutByIndex(index) {
+        return list[index];
+    }
+</script>
+
+</html>
