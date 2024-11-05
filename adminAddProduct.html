@@ -24,7 +24,8 @@
             <input type="number" id="priceProducts" value="">
         </div>
     </div>
-    <button id="create-button" onclick="create()">thêm</button>
+    <button type="button" onclick="getToNavigate()">Back</button>
+    <button id="create-button" onclick="create()">add</button>
     <script>
         var listProduct = []
         function Product(name, amount, price) {
@@ -38,32 +39,20 @@
             const amount = document.getElementById('amountProduct').value
             const price = document.getElementById('priceProducts').value;
             const product = new Product(name, amount, price)
+            getListProduct()
             if (!validTotal(product)) {
                 window.alert("amount or price must over 1")
             }
-            else if (!JSON.parse(localStorage.getItem('products'))) {
-                listProduct = [];
+            else if (getActionType() == 'edit') {
+                buttonEditProduct(name, amount, price);
             }
             else {
-                listProduct = JSON.parse(localStorage.getItem('products'));
-            }
-            listProduct.push(product)
-            localStorage.setItem("products", JSON.stringify(listProduct))
-            window.alert("Added Successfully")
-            window.location = "clientOutProduct.html"
-        }
-
-
-        function edit() {
-            const name = document.getElementById('nameProduct').value
-            const amount = document.getElementById('amountProduct').value
-            const price = document.getElementById('priceProducts').value;
-            const product = new Product(name, amount, price)
-            if (!validTotal(product)) {
-                window.alert("amount or price must over 1")
+                listProduct.push(product)
+                localStorage.setItem("products", JSON.stringify(listProduct))
+                window.alert("Added Successfully");
+                getToNavigate();
             }
         }
-
         function validTotal(product) {
             return product.amount > 0 && product.price > 0 // tra ve boolean
         }
@@ -81,7 +70,6 @@
         function getActionType() { //  lay du lieu action
             return localStorage.getItem('action')
         }
-
         function getListProduct() { // neu ko co du lieu => rong, neu co thi tra? ve OJ
             if (!JSON.parse(localStorage.getItem('products'))) {
                 listProduct = [];
@@ -89,6 +77,25 @@
             else {
                 listProduct = JSON.parse(localStorage.getItem('products'));
             }
+        }
+        getToNavigate = () => {
+            window.location = "clientOutProduct.html"
+        }
+        buttonEditProduct = (name, amount, price) => {
+            const index = localStorage.getItem('index')
+
+            listProduct.map((productt, i) => {
+                if (i == index) {
+                    productt.name = name;
+                    productt.amount = amount;
+                    productt.price = price;
+
+                }
+                return productt;
+            })
+            localStorage.setItem("products", JSON.stringify(listProduct))
+            window.alert("Edit Successfull")
+            getToNavigate();
         }
     </script>
 
