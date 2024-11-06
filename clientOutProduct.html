@@ -35,7 +35,7 @@
         <div class="div" id="buttonDelete"></div>
     </div>
     <div class="div" id="buttonBack"></div>
-    <button type="button" onclick="addProduct()">Add Products</button>
+    <button type="button" onclick="addProduct()">Add Products</button></div>
     <script>
         const list = JSON.parse(localStorage.getItem('products'))
         for (let index = 0; index < list.length; index++) {
@@ -63,8 +63,8 @@
             document.getElementById('nameProduct').appendChild(nameDivTag)
             document.getElementById('amountProduct').appendChild(amountDivTag)
             document.getElementById('priceProduct').appendChild(priceDivTag)
-            // document.getElementById('buttonContainer').appendChild(buttonEdit);
-            // document.getElementById('buttonDelete').appendChild(buttonDelete);
+            document.getElementById('buttonContainer').appendChild(buttonEdit);
+            document.getElementById('buttonDelete').appendChild(buttonDelete);
         }
         function editButton(index) {
             localStorage.setItem('index', index)
@@ -74,23 +74,24 @@
         removeProduct = (index) => {
             for (let i = 0; i < list.length; i++) {
                 const element = list[i];
-                if (i === index) {
-                    const nameDivTag = document.getElementById(`tag${index}`)
-                    const amountDivTag = document.getElementById(`amount${index}`)
-                    const priceDivTag = document.getElementById(`price${index}`)
-                    const createButtonDom = document.getElementById(`createButton${index}`)
-                    const deleteButtonDom = document.getElementById(`deleteButton${index}`)
+                if (i == index) {
+                    var nameDivTag = document.getElementById(`tag${index}`)
+                    var amountDivTag = document.getElementById(`amount${index}`)
+                    var priceDivTag = document.getElementById(`price${index}`)
+                    var buttonEdit = document.getElementById(`createButton${index}`)
+                    var buttonDelete = document.getElementById(`deleteButton${index}`)
                     nameDivTag.remove();
                     amountDivTag.remove();
                     priceDivTag.remove();
-                    createButtonDom.remove();
-                    deleteButtonDom.remove();
+                    buttonEdit.remove();
+                    buttonDelete.remove();
                 }
             }
-            localStorage.setItem("products", JSON.stringify(list.splice(index, 1)))
+            list.splice(index, 1)
+            localStorage.setItem("products", JSON.stringify(list))
         }
         addProduct = () => {
-            localStorage.setItem('action', 'add')
+            // localStorage.setItem('action', 'add')
 
             window.location = "adminAddProduct.html";
         }
