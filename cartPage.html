@@ -35,10 +35,17 @@
         <div class="div" id="buttonDelete"></div>
         <div class="div" id="addButton"></div>
     </div>
+    <div>
+        <span>Total Price: $
+            <span id="total"></span>
+    </div>
+    <div>
+        <button onclick="NegativeToCart()">NegativeToCart</button>
+        <button onclick="paymentButton()">make Payment</button>
+    </div>
 </body>
 <script>
     cartList = getCartList();
-
     for (let index = 0; index < cartList.length; index++) {
         const element = cartList[index];
         const nameDivTag = document.createElement("div")
@@ -53,44 +60,61 @@
         nameDivTag.textContent = element.name
         amountDivTag.textContent = element.amount
         priceDivTag.textContent = element.price;
-
         document.getElementById('nameProduct').appendChild(nameDivTag)
         document.getElementById('amountProduct').appendChild(amountDivTag)
         document.getElementById('priceProduct').appendChild(priceDivTag)
-
     }
-    const totalPriceDOM = document.createElement("p")
-    totalPriceDOM.id = 'total-price'
-    totalPriceDOM.textContent = `Total Price: $ ${getTotalPrice()}`;
-    document.getElementById('totalPrice').appendChild(totalPriceDOM)
-
-
-    function getCartList() {
-        cart = JSON.parse(localStorage.getItem('cart'));
-        list = JSON.parse(localStorage.getItem('products'))
-        cartList = [];
-        cart.forEach(element => {
-            let productCart = getProdcutByIndex(element.index)
-            productCart.amount = element.amount
-            cartList.push(productCart)
-
-        });
-
-        return cartList;
-    }
-
-    function getTotalPrice() {
-        let total = 0;
-        cartList.forEach((product) => {
-            total += Number(product.price) * Number(product.amount)
-        })
-        return total
-    }
-
-
-    function getProdcutByIndex(index) {
+    function getProductInList(index) {
         return list[index];
     }
+    function getCartList() {
+        var total = 0;
+        cart = JSON.parse(localStorage.getItem('cart'));
+        list = JSON.parse(localStorage.getItem('products'));
+        cartList = []
+        cart.forEach(element => {
+            let cartProduct = getProductInList(element.index)
+            cartProduct.index = getProductInList.index;
+            cartProduct.amount = element.amount;
+            cartList.push(cartProduct)
+        });
+        cartList.forEach(element => {
+            total += + element.price * element.amount;
+        })
+        document.getElementById('total').innerHTML = total;
+        return cartList;
+    }
+    function getListProduct() {
+        return listProduct = JSON.parse(localStorage.getItem('products'));
+    }
+    // function getAmount(element) {
+    //     return element.amount == element.amount
+    // }
+    function paymentButton() {
+        let cartlist = getCartList();
+        let productList = getListProduct();
+        productList.map(product => {
+            productListCart = cartlist.find(item => item.name == product.name)
+            if (productListCart) {
+                product.amount -= productListCart.amount;
+            }
+        })
+        localStorage.setItem("products", JSON.stringify(productList))
+        localStorage.setItem("cart", JSON.stringify([]))
+        window.alert("Payment Successfull")
+        NegativeToCart();
+    }
+
+    function NegativeToCart() {
+        window.location = "clientOutProduct.html";
+    }
+
+
+
+
+
+
+
 </script>
 
 </html>

@@ -38,7 +38,7 @@
         <div class="div" id="addButton"></div>
     </div>
     <div class="div" id="buttonBack"></div>
-    <button type="button" onclick="addProduct()">Add Products</button>
+    <button onclick="addProduct()">Add Products</button>
     <button onclick="navigateToCart()">viewCart</button>
     <script>
         cart = [];
@@ -48,99 +48,56 @@
             const nameDivTag = document.createElement("div")
             const amountDivTag = document.createElement("div")
             const priceDivTag = document.createElement("div")
-            const buttonEdit = document.createElement("button");
-            const buttonDelete = document.createElement("button");
             const buttonBack = document.createElement("button");
             const addButtonDOM = document.createElement("button");
-            buttonEdit.id = `createButton${index}`
-            buttonDelete.id = `deleteButton${index}`
             nameDivTag.id = `tag${index}`
             amountDivTag.id = `amount${index}`
             priceDivTag.id = `price${index}`
             addButtonDOM.className = 'edit-button';
-            buttonEdit.className = 'edit-button';
-            buttonDelete.className = 'edit-button';
             nameDivTag.textContent = element.name
             amountDivTag.textContent = element.amount
             priceDivTag.textContent = `$ ${element.price}`
-            buttonEdit.textContent = 'edit';
-            buttonDelete.textContent = 'Detelte';
             addButtonDOM.textContent = 'Add To Cart';
-            buttonEdit.onclick = () => editButton(index);
-            buttonDelete.onclick = () => { removeProduct(index) }
-            addButtonDOM.onclick = () => { addProdcutToCart(index) }
+            addButtonDOM.onclick = () => { addProductToCart(index) };
             document.getElementById('nameProduct').appendChild(nameDivTag)
             document.getElementById('amountProduct').appendChild(amountDivTag)
             document.getElementById('priceProduct').appendChild(priceDivTag)
             document.getElementById('addButton').appendChild(addButtonDOM);
-            // document.getElementById('buttonContainer').appendChild(buttonEdit);
-            // document.getElementById('buttonDelete').appendChild(buttonDelete);
         }
-        function editButton(index) {
-            localStorage.setItem('index', index)
-            localStorage.setItem('action', 'edit')
-            window.location = "adminAddProduct.html"
+        function addProduct() {
+            window.location = "adminAddProduct (1).html";
         }
-        removeProduct = (index) => {
-            for (let i = 0; i < list.length; i++) {
-                const element = list[i];
-                if (i === index) {
-                    const nameDivTag = document.getElementById(`tag${index}`)
-                    const amountDivTag = document.getElementById(`amount${index}`)
-                    const priceDivTag = document.getElementById(`price${index}`)
-                    const createButtonDom = document.getElementById(`createButton${index}`)
-                    const deleteButtonDom = document.getElementById(`deleteButton${index}`)
-                    nameDivTag.remove();
-                    amountDivTag.remove();
-                    priceDivTag.remove();
-                    createButtonDom.remove();
-                    deleteButtonDom.remove();
-                }
-            }
-            localStorage.setItem("products", JSON.stringify(list.splice(index, 1)))
+        function navigateToCart() {
+            window.location = "cartPage.html";
         }
-        addProduct = () => {
-            localStorage.setItem('action', 'add')
-
-            window.location = "adminAddProduct.html";
-        }
-
-        function addProdcutToCart(index) {
-            getCart();
-            if (isProdcutExsitInCart(index)) {
-                cart.map(element => {
-                    if (element.index == index) {
-                        element.amount += 1;
-                    }
-                });
-            } else {
-                const test = {
-                    index: index,
-                    amount: 1
-                }
-                cart.push(test);
-            }
-            localStorage.setItem("cart", JSON.stringify(cart));
-        }
-
-        getCart = () => {
+        function getCart() {
             cart = JSON.parse(localStorage.getItem('cart'))
-            if (cart == undefined) {
+            if (cart == undefined || cart == null) {
                 cart = []
             }
 
         }
-
-        function navigateToCart() {
-            window.location = "cartPage.html";
+        function isProductExsitOnArray(index) {
+            return cart.some(product => product.index == index)
         }
-
-        function isProdcutExsitInCart(index) {
-            return cart.some((prodcut) => prodcut.index == index)
+        addProductToCart = (index) => {
+            getCart()
+            if (isProductExsitOnArray(index)) {
+                cart.map((element) => {
+                    if (element.index == index) {
+                        element.amount += 1;
+                    }
+                })
+            }
+            else if (!isProductExsitOnArray(index) || cart == []) {
+                const testElement = {
+                    index: index,
+                    amount: 1,
+                }
+                cart.push(testElement)
+            }
+            localStorage.setItem("cart", JSON.stringify(cart))
         }
-
-        // console.log(localStorage.setItem("products", list.splice(index, 1)));
-
     </script>
 </body>
 
