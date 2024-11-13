@@ -1,0 +1,23 @@
+.inline-block {
+    display: inline-block;
+    margin: 1px;
+    padding: 10px;
+}
+
+.newVersion {
+    display: inline-block;
+    margin-left: 25px;
+}
+
+.button {
+    display: block;
+
+    button {
+        height: 18px;
+        margin-left: 5px;
+    }
+}
+
+.table {
+    display: flex;
+}

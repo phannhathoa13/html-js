@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="website.css">
+    <title>Member List</title>
+</head>
+
+<body>
+    <div>
+        <span class="inline-block">UserID</span>
+        <span class="inline-block">Username: </span>
+        <span class="inline-block">Passowrd:</span>
+    </div>
+    <div class="table">
+        <span class="newVersion" id="user"></span>
+        <span class="newVersion" id="username"></span>
+        <span class="newVersion" id="password"></span>
+        <span class="button" id="edit"></span>
+        <span class="button" id="delete"></span>
+        <span class="button" id="ban"></span>
+        <span class="button" id="unban"></span>
+        <span class="button" id="changebutton"></span>
+    </div>
+    <label for="search">Search username</label>
+    <input type="text" id="search" onchange="onInput(event)"></input><br>
+    <button onclick="backToLogin()">Logout</button>
+
+    <script src="listMember.js"></script>
+
+</body>
+
+</html>
