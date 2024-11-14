@@ -9,6 +9,9 @@ function login() { // void
     else if (adminAccount(username, password)) {
         window.location = "../adminWebsite/listMember.html";
     }
+    else if (adminAccountShoppeCart(username, password)) {
+        window.location = "../shoppeCarta/adminCart.html"
+    }
     else if (!checkUsernameAndPassword(username, password, listAccount)) {
         windowAlert("The username or password is wrong, try again !")
     }
@@ -50,6 +53,13 @@ function adminAccount(user, pass) {
         password: "ADMIN",
     }
     return (user == adminAccount.username && pass == adminAccount.password);
+}
+function adminAccountShoppeCart(user, pass) {
+    const adminAccountCart = {
+        username: "STAFF",
+        password: "STAFF",
+    }
+    return (user == adminAccountCart.username && pass == adminAccountCart.password)
 }
 function isAccountExistInBanList(username) {
     return banlist.some((element) => element.username == username);
