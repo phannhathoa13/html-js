@@ -1,6 +1,9 @@
 function login() { // void
     listAccount = getAccountList();
     banlist = getBanList();
+    if (banlist == null) {
+        banlist = [];
+    }
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     if (!isUsernameOrPasswordEmpty(username, password)) {
@@ -20,6 +23,7 @@ function login() { // void
     }
     else {
         windowAlert("Login Successed ")
+        window.location = "../showListProduct/showListProduct.html"
     }
 }
 function getAccountList() { // return gia tri
@@ -65,16 +69,6 @@ function isAccountExistInBanList(username) {
     return banlist.some((element) => element.username == username);
 }
 
-
-const number2 = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 11, 13, 41];
-
-
-// Hàm kiểm tra số nguyên tố
-function isPrime(num) {
-    return (num % 2 == 1)
-}
-const primeNumbers = number2.filter(isPrime)
-console.log(primeNumbers); // Kết quả mong muốn: [2, 3, 5, 7, 11, 13]
 
 
 

@@ -1,4 +1,4 @@
-ouputListCart()
+ouputListCart();
 cartlist = []
 function ouputListCart() {
     listProduct = getListProduct()
@@ -46,12 +46,16 @@ function addToCart(product) {
         cartlist.map((_product) => {
             if (_product.name == product.name) {
                 _product.amount += 1;
+                if (_product.amount == product.amount) {
+                    _product.amount = product.amount;
+                    window.alert("amount Product Is reached to limited")
+                }
             }
         })
     }
     localStorage.setItem("cart", JSON.stringify(cartlist))
-
 }
+
 function gotoCart() {
     window.location = "../cartList/cartList.html"
 }

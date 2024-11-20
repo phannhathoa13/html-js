@@ -22,6 +22,14 @@
         <span class="contentAmount" id="amountProduct"></span>
         <span class="contentPrice" id="priceProduct"></span>
         <span class="contentPrice" id="totalPrice"></span>
+        <span class="button" id="removeItem"></span>
+    </div>
+    <div>
+        <span>Total Price:</span><span id="totalPriceAllProduct"></span>
+    </div>
+    <div>
+        <label for="discount">Enter Discount Voucher</label>
+        <input id="discount" type="text" onchange="searchVoucher(event)">
     </div>
     <button onclick="onPayment()">Payment</button>
     <script src="cartList.js"></script>

@@ -21,7 +21,7 @@ function createProduct() {
     }
     else {
         listProductCart.push(productCart)
-        localStorage.setItem("listCart", JSON.stringify(listProductCart))
+        localStorage.setItem("listProduct", JSON.stringify(listProductCart))
     }
 }
 function isProductNameOrAmountOrPriceEmpty(name, amount, price) { // boolean
@@ -34,7 +34,7 @@ function windowAlert(string) {
     window.alert(string);
 }
 function getListProductCart() {
-    return (JSON.parse(localStorage.getItem('listCart')))
+    return (JSON.parse(localStorage.getItem('listProduct')))
 }
 function backToListProduct() {
     window.location = "../showListProduct/showListProduct.html"

@@ -1,4 +1,3 @@
-
 listAccount = [];
 function Account(user, pass) {
     this.username = user;
@@ -34,40 +33,33 @@ function saveButton() {
     })
 
 }
+
 function registerAccount() {
     listAccount = getListAccount();
-    if (!listAccount) {
+    if (listAccount == null) {
         listAccount = []
     }
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-    const account = new Account(username, password);
     const confirmPassword = document.getElementById('confirmPassword').value;
+    const account = new Account(username, password);
     if (!isUsernameOrPasswordEmpty(username, password)) {
-        windowAlert("The username or password is empty")
+        windowAlert("Username Or Password is Empty")
     }
     else if (isPassowrdAndConfirmPasswordTheSame(password, confirmPassword)) {
-        windowAlert("The password must the same confirmpassword");
+        windowAlert("Password and confirm password must the same ")
     }
-    else if (checkExistAccount(username)) {
-        windowAlert("The username is exsited, try agian")
+    else if (checkExistAccount(username, password)) {
+        windowAlert("this account is exsited")
     }
     else {
-        listAccount.push(account)
-        localStorage.setItem("accounts", JSON.stringify(listAccount));
-        window.alert("register Successed");
+        listAccount.push(account);
+        localStorage.setItem("accounts", JSON.stringify(listAccount))
+        windowAlert("Account Created Successfully")
+        window.location = "../loginWebsite/login.html"
     }
 }
-function onclickSubmit() {
-    const button = document.getElementById('buttonChange')
-    if (button.innerHTML == "Register") {
-        button.innerHTML = "Save"
-    }
-    else {
-        button.innerHTML = "Register";
-    }
 
-}
 function isPassowrdAndConfirmPasswordTheSame(pass, confirm) {
     return (pass !== confirm)
 }
