@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../website.css">
+    <title>Cart List</title>
+</head>
+
+<body>
+    <div>
+        <span class="header">ID</span>
+        <span class="header">ProductName </span>
+        <span class="header">ProductAmount</span>
+        <span class="header">ProductPrice</span>
+        <span class="header">Total Price</span>
+    </div>
+    <div class="table">
+        <span class="contentid" id="id"></span>
+        <span class="contentName" id="nameProduct"></span>
+        <span class="contentName" id="amountProduct"></span>
+        <span class="contentPrice" id="priceProduct"></span>
+        <span class="contentPrice" id="totalPrice"></span>
+        <span class="button" id="removeItem"></span>
+    </div>
+    <div>
+        <span>Total Price:</span><span id="totalPriceAllProduct"></span>
+    </div>
+    <div>
+        <label for="discount">Enter Discount Voucher</label>
+        <input id="discount" type="text" placeholder="enter Voucher">
+        <span id="timer"></span>
+        <button onclick="searchVoucher()">Apply</button>
+        <button onclick="goToHistoryPayment()">History Payment</button>
+    </div>
+    <div>
+        <button onclick="backToShopProduct()">Back</button>
+        <button onclick="onPayment()">Payment</button>
+    </div>
+    <script src="cartListWebsite.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+.inline-block {
+    display: inline-block;
+    margin: 2px;
+    padding: 10px;
+}
+
+.newVersion {
+    display: inline-block;
+    margin-left: 25px;
+}
+
+.button {
+    display: block;
+
+    button {
+        height: 18px;
+        margin-left: 5px;
+    }
+}
+
+.buttonAddToCart {
+    display: block;
+    margin-left: 51px;
+
+    button {
+        height: 18px;
+        margin-left: 5px;
+    }
+}
+
+.table {
+    display: flex;
+}
+
+.header {
+    display: inline-block;
+    margin: 2px;
+    padding: 10px;
+}
+
+.contentid {
+    display: inline-block;
+    margin-left: 14px;
+}
+
+.contentName {
+    display: inline-block;
+    margin-left: 48px;
+}
+
+.contentAmount {
+    display: inline-block;
+    margin-left: 120px;
+}
+
+.contentPrice {
+    display: inline-block;
+    margin-left: 113px;
+}
+
+.loginOut {
+    display: right;
+    margin-left: 113px;
+}
