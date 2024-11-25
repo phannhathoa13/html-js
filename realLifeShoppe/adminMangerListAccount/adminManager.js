@@ -32,7 +32,6 @@ function createDOM(listAccount) {
         usernameDOM.textContent = accounts.username;
         document.getElementById('username').appendChild(usernameDOM);
         document.getElementById('checkBox').appendChild(checkBoxDOM);
-        checkBoxDOM.onclick = () => { isCheckBoxChecked(checkBoxDOM.id, usernameDOM.id) }
     });
 }
 
@@ -40,17 +39,26 @@ function addVoucherToAccount() {
     const voucherName = document.getElementById('voucher').value;
     const discount = document.getElementById('discount').value;
     const voucherList = new Voucher(voucherName, discount);
-    const checkBox = document.getElementById(`username${accounts.username}`);
-    const username = document.getElementById(`checkBox${accounts.username}`).textContent;
-    let voucherFromAccount = getVoucherFromAccount(username);
-
-}
-function isCheckBoxChecked(id, usernameID) {
-    const checkBox = document.getElementById(id);
-    const username = document.getElementById(usernameID).textContent;
-    if (checkBox.checked) {
-        console.log(username);
+    const checkBoxContainer = document.getElementById('checkBox');
+    const usernameContainer = document.getElementById('username');
+    const checkBox = checkBoxContainer.children;
+    const usernames = usernameContainer.children;
+    for (let index = 0; index < checkBox.length; index++) {
+        if (checkBox[index].checked) {
+           const usernameDom = usernames[index].textContent;
+           console.log(usernameDom);
+           
+        }
+        
     }
+}
+
+function setAccountToLocalStorage(listAccount) {
+    return localStorage.setItem('accounts', JSON.stringify(listAccount));
+}
+function isCheckBoxChecked(usernameID) {
+    const username = document.getElementById(usernameID).textContent;
+    return username;
 }
 function getVoucherFromAccount(usernameID) {
     let listAccount = getListAccount();
