@@ -4,7 +4,7 @@ function Account(username, password) {
     this.password = password;
     this.cart = [];
     this.voucher = [];
-    this.error = [];
+    this.error = 0;
     this.history = [];
 }
 function registerAccount() {

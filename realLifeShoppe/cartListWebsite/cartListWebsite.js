@@ -4,9 +4,7 @@ const voucherList = [
     { code: "tandeptrai", discount: 90 },
     { code: "datdeptrai", discount: 30 },
 ]
-let count = 0;
-let remainingTime = 300;
-let timer = document.getElementById('timer')
+let remainingTime = 0;
 showCartList()
 function showCartList() {
     let cartInAccountByCookie = getAccountCookie()
@@ -50,7 +48,7 @@ function onPayment() {
             return account;
         }
     })
-    localStorage.setItem("accounts", JSON.stringify(listAccount))
+    setAccountsToLocalStorage(listAccount);
     window.alert("Paymnet successed")
 }
 function updateAmountProductInCart() {
@@ -68,15 +66,8 @@ function updateAmountProductInCart() {
             return _products;
         })
     });
-    listAccount = listAccount.map((account) => {
-        if (account.username == accountCookie.username) {
-            return accountCookie
-        }
-        else {
-            return account
-        }
-    })
-    localStorage.setItem("accounts", JSON.stringify(listAccount));
+    listAccount = updatedListAccount(listAccount, accountCookie)
+    setAccountsToLocalStorage(listAccount);
 }
 
 function searchVoucher() {
@@ -84,23 +75,14 @@ function searchVoucher() {
     let accountByCookie = getAccountCookie();
     let listAccount = getListAccount();
     let listVoucher = voucherList.find((voucher) => voucher.code == inputValue)
-    if (accountByCookie.error.length >= 5) {
+    if (accountByCookie.error >= 5) {
         window.alert("you tried over 5 times, please trya agian after 5minutes")
         document.getElementById('discount').disabled = true;
-        const timeInterval = setInterval(() => {
-            updateTimer(remainingTime)
-            remainingTime--;
-            if (remainingTime < 0) {
-                clearInterval(timeInterval);
-                document.getElementById('discount').disabled = false;
-                timer.textContent = "Please try again"
-            }
-        }, 1000)
+        settimeInterval(30);
         return;
     }
     if (!listVoucher) {
-        accountByCookie.error.push(count);
-        count++;
+        accountByCookie.error += 1;
         window.alert("Wrong voucher, try agian");
     }
     else {
@@ -108,22 +90,34 @@ function searchVoucher() {
         document.getElementById('totalPriceAllProduct').innerHTML = discountedPrice;
         window.alert("discounted Price");
     }
-    listAccount = listAccount.map((accounts) => {
-        if (accounts.username == accountByCookie.username) {
-            return accountByCookie;
-        }
-        else {
-            return accounts;
-        }
-    })
-    localStorage.setItem("accounts", JSON.stringify(listAccount));
+    listAccount = updatedListAccount(listAccount, accountByCookie);
+    setAccountsToLocalStorage(listAccount)
 }
 function updateTimer(remainingTime) {
+    let timer = document.getElementById('timer')
     let minutes = Math.floor(remainingTime / 60);
     let second = remainingTime % 60;
     timer.textContent = `Thời gian còn lại: ${minutes} phút ${second} giây`;
 }
-
+function settimeInterval(remainingTime) {
+    const timeInterval = setInterval(() => {
+        updateTimer(remainingTime)
+        remainingTime--;
+        if (remainingTime < 0) {
+            clearInterval(timeInterval);
+            document.getElementById('discount').disabled = false;
+            timer.textContent = "Please try again"
+        }
+    }, 1000)
+}
+function setAccountsToLocalStorage(listAccount) {
+    localStorage.setItem("accounts", JSON.stringify(listAccount));
+}
+function updatedListAccount(listAccount, accountByCookie) {
+    return listAccount.map((accounts) =>
+        accounts.username == accountByCookie.username ? accountByCookie : accounts
+    );
+}
 function goToHistoryPayment() {
     window.location = "../historyPayment/historyPayment.html"
 }

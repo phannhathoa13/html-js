@@ -1,0 +1,32 @@
+.username {
+    display: inline-block;
+    margin-left: 65px;
+}
+
+.checkBox {
+    display: inline-block;
+    margin-left: 37px;
+}
+
+.header {
+    margin: 10px;
+    padding: 10px;
+}
+
+.inputHeader {
+    margin: 10px;
+}
+
+.buttonCheckBox {
+    display: inline-block;
+    margin-left: 51px;
+
+    button {
+        height: 18px;
+        margin-left: 5px;
+    }
+}
+
+.table {
+    display: flex;
+}

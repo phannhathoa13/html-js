@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../adminMangerListAccount/adminManager.css">
+    <title>ADMIN ADMIN</title>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>
+                <label for="account" class="voucher">Account</label>
+            </td>
+            <td>
+                <input onchange="searchUsername(event)" placeholder="Input username to find" id="account"
+                    class="inputHeader">
+            </td>
+            <td>
+                <label for="voucher" class="voucher">Voucher</label>
+            </td>
+            <td>
+                <input placeholder="Enter voucher" id="voucher" class="inputHeader">
+            </td>
+            <td>
+                <input placeholder="Enter discount" id="discount" class="inputHeader">
+            </td>
+        </tr>
+        <tr>
+            <td class="header">CheckBox</td>
+            <td class="header">Username</td>
+        </tr>
+        <tr>
+            <td>
+                <span id="checkBox" class="buttonCheckBox"></span>
+            </td>
+            <td>
+                <span id="username" class="username"></span>
+            </td>
+        </tr>
+    </table>
+    <button onclick="addVoucherToAccount()">Apply Voucher</button>
+    <button onclick="remove()">Remove</button>
+    <script src="adminManager.js"></script>
+</body>
+
+</html>
