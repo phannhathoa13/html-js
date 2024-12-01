@@ -30,3 +30,11 @@
 .table {
     display: flex;
 }
+
+.eixstEdVoucher {
+    color: rgb(238, 77, 77);
+}
+
+.notExistVoucher {
+    color: rgb(62, 171, 62);
+}

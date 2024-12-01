@@ -22,7 +22,8 @@
                 <label for="voucher" class="voucher">Voucher</label>
             </td>
             <td>
-                <input onchange="" placeholder="Enter voucher" id="voucher" class="inputHeader">
+                <input onchange="statusVoucherInListAccount(event)" placeholder="Enter voucher" id="voucher"
+                    class="inputHeader">
             </td>
             <td>
                 <input placeholder="Enter discount" id="discount" class="inputHeader">
@@ -31,13 +32,18 @@
         <tr>
             <td class="header">CheckBox</td>
             <td class="header">Username</td>
+            <td class="header">Details</td>
         </tr>
         <tr>
             <td>
+
                 <span id="checkBox" class="buttonCheckBox"></span>
             </td>
             <td>
                 <span id="username" class="username"></span>
+            </td>
+            <td id="voucher-detail">
+
             </td>
         </tr>
     </table>
