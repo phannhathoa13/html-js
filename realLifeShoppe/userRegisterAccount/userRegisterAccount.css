@@ -17,7 +17,14 @@ html, body {
     min-height: 11vh;
     box-shadow: 0 6px 6px rgba(0, 0, 0, .06);
     height: 84px;
-    .content {
+    .content{
+        img{
+            position: relative;
+            width: 35px;
+            height: 35px;
+            bottom: 9px;
+            left: 20px;
+        }
         .color {
             color: #ee4d2d;
         }
@@ -34,13 +41,6 @@ html, body {
         }
         cursor: pointer;
     }
-    img{
-        position: relative;
-        width: 35px;
-        height: 35px;
-        bottom: 9px;
-        left: 20px;
-    }
 }
 .main{
     display: flex;
@@ -52,17 +52,56 @@ html, body {
     background-repeat: no-repeat;
     background-position: center center;
     margin: 0 auto;
-    min-height: 640px;
+    min-height: 600px;
     min-width: 1200px;
     .main-content{
-        background-color: white;
+        font-size: 1.3em;
+        padding: 30px;
+        display: flex;
         position: relative;
         width: 400px;
         height: 428px;
-        right: 30px;
+        right: 200px;
+        bottom: 1px;
+        background-color: #fff;
+        border-radius: 4px;
+        box-shadow: 0 3px 10px 0 rgba(0, 0, 0, .14);
+        flex-direction: column;
+        gap: 28px;
         input {
             width: auto;
+            height: 40px;
+            padding: .75rem;
         }
+        .sticker {
+            height: 300px;
+            width: 300px;
+        }
+        button {
+            background-color: #ee4d2d;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, .09);
+             color: #fff;
+             height: 40px;
+             border: none;
+             cursor: pointer;
+            opacity: .7;
+        }
+        button:hover {
+            opacity: 1;
+        }
+        .main-divider {
+            display: flex;
+            align-items: center;
+            gap: 0px;
+            color: grey;
+          }
+          .main-divider::before,
+          .main-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background-color: lightgrey; 
+          }
     }
     
 }
