@@ -8,16 +8,32 @@ html, body {
     margin: 0;
     box-sizing: border-box;
 }
+.curser{
+    cursor: pointer;
+}
+.colorCurnent {
+    color: #ee4d2d;
+}
+.colorTextCurrent{
+    color: rgba(0, 0, 0, .8);
+}
+.col-25{
+    width: 25%;
+}
 .header{
     width: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 135px;
-    min-height: 11vh;
+    padding: 0px 250px;
+    min-height: 9vh;
     box-shadow: 0 6px 6px rgba(0, 0, 0, .06);
     height: 84px;
+
     .content{
+        gap: 22px;
+        display: flex;
+        font-size: 1.5em;
         img{
             position: relative;
             width: 35px;
@@ -28,9 +44,6 @@ html, body {
         .color {
             color: #ee4d2d;
         }
-        gap: 22px;
-        display: flex;
-        font-size: 1.5em;
     }
     .helper{
         a{
@@ -41,6 +54,7 @@ html, body {
         }
         cursor: pointer;
     }
+
 }
 .main{
     display: flex;
@@ -61,7 +75,7 @@ html, body {
         position: relative;
         width: 400px;
         height: 428px;
-        right: 200px;
+        right: 320px;
         bottom: 1px;
         background-color: #fff;
         border-radius: 4px;
@@ -102,6 +116,58 @@ html, body {
             height: 1px;
             background-color: lightgrey; 
           }
+        .main-ButtonLink {
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+            width: 350px;
+            height: 30px;
+            .main-ButtonLink-Feauture {
+                padding: 0 0 0 8px;
+                text-align: center;
+                background-color: #fff;
+                border: 1px solid rgba(0, 0, 0, .26);
+                border-radius: 2px;
+                box-sizing: border-box;
+                color: rgba(0, 0, 0, .87);
+                font-size: .875rem;
+                height: 40px;
+                outline: none;
+                padding: 0 2px;
+                width: 100%;
+                cursor: pointer;
+                img {
+                    right: 3px;
+                    top: 7px;
+                    position: relative;
+                    max-width: 22px;
+                    max-height: 22px;
+                }
+            }
+        }
+
+        .main-policy{
+            width: 335px;
+            height: 30px;
+            font-size: 12px;
+            text-align: center;
+            color: rgba(0, 0, 0, .87);       
+        }
+        .main-login{
+            color: rgba(0, 0, 0, .26);
+            padding-right: 4px;
+            font-size: 14px;
+            width: 100%;
+            height: 16.8px;
+            display: flex;
+            justify-content: center;
+        }
+    
+    }
+}
+    .footer{
+        display: flex;
+        width: 1680px;
+        height: 800px;
     }
     
-}

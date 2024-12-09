@@ -22,11 +22,84 @@
         <div class="main">
             <div class="main-content">
                 <label for="phoneNumber">Register  </label>
-                <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number">
-                 <button id="buttonRegister" onclick="registerAccount()">Register</button>
-                 <div class="main-divider">
-                    OR
-                 </div>
+                    <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number">
+                    <button id="buttonRegister" onclick="registerAccount()">Register</button>
+                    <div class="main-divider">
+                        or
+                    </div>
+                    <div class="main-ButtonLink">
+                        <div class="main-ButtonLink-Feauture">
+                            <span>
+                            <img src="data:image/png;base64,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">
+                            Facebook
+                            </span>
+                        </div>
+                        <div class="main-ButtonLink-Feauture">
+                            <span>
+                            <img src="data:image/png;base64,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">
+                            Google
+                            </span>
+                        </div>
+                    </div>
+                <div class="main-policy">
+                        <div>
+                            Bằng việc đăng kí, bạn đã đồng ý với Shopee về 
+                        </div>
+                        <div class="colorCurnent curser">
+                            Điều khoản dịch vụ <span class="colorTextCurrent">&</span> Chính sách bảo mật  
+                        </div>
+                </div>
+                <div class="main-login">
+                    Did you already have account? <span class="colorCurnent">     Login</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer-infor1">
+                <div><strong>Custommer Service</strong></div>
+                <div>Updating.....</div>
+                <div>Updating.....</div>
+                <div>Updating.....</div>
+                <div>Updating.....</div>
+                <div>Updating.....</div>
+                <div>Updating.....</div>
+                <div>Updating.....</div>
+                <div>Updating.....</div>
+            </div>
+            <div class="ffooter-infor1">
+                <div><strong>Shoppe VietNam</strong></div>
+                <div>Updating.....</div>
+                <div>Updating.....</div>
+                <div>Updating.....</div>
+                <div>Updating.....</div>
+                <div>Updating.....</div>
+                <div>Updating.....</div>
+                <div>Updating.....</div>
+                <div>Updating.....</div>
+            </div>
+            <div class="footer-payment">
+                <img src="https://down-vn.img.susercontent.com/file/d4bbea4570b93bfd5fc652ca82a262a8">
+                <img src="https://down-vn.img.susercontent.com/file/a0a9062ebe19b45c1ae0506f16af5c16">
+                <img src="https://down-vn.img.susercontent.com/file/38fd98e55806c3b2e4535c4e4a6c4c08">
+                <img src="https://down-vn.img.susercontent.com/file/bc2a874caeee705449c164be385b796c">
+                <img src="https://down-vn.img.susercontent.com/file/2c46b83d84111ddc32cfd3b5995d9281">
+                <img src="https://down-vn.img.susercontent.com/file/5e3f0bee86058637ff23cfdf2e14ca09">
+                <img src="https://down-vn.img.susercontent.com/file/9263fa8c83628f5deff55e2a90758b06">
+                <img src="https://down-vn.img.susercontent.com/file/0217f1d345587aa0a300e69e2195c492">
+            </div>
+            <div class="footer-infor1">
+               <div> <strong>News</strong></div>
+                <div>Updating.....</div>
+                <div>Updating.....</div>
+                <div>Updating.....</div>
+                <div>Updating.....</div>
+                <div>Updating.....</div>
+                <div>Updating.....</div>
+                <div>Updating.....</div>
+                <div>Updating.....</div>
+            </div>
+            <div class="footer-QR">
+
             </div>
         </div>
    
