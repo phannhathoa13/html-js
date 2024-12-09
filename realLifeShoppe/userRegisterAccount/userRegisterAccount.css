@@ -1,0 +1,68 @@
+html, body {
+    color: rgba(0, 0, 0, .8);
+    font-family: Helvetica Neue, Helvetica, Arial, 文泉驛正黑, WenQuanYi Zen Hei, Hiragino Sans GB, 儷黑 Pro, LiHei Pro, Heiti TC, 微軟正黑體, Microsoft JhengHei UI, Microsoft JhengHei, sans-serif;
+    line-height: 1.2;
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.header{
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 135px;
+    min-height: 11vh;
+    box-shadow: 0 6px 6px rgba(0, 0, 0, .06);
+    height: 84px;
+    .content {
+        .color {
+            color: #ee4d2d;
+        }
+        gap: 22px;
+        display: flex;
+        font-size: 1.5em;
+    }
+    .helper{
+        a{
+            font-size: 0.9em;
+            color: #ee4d2d;
+        text-decoration: none;
+        text-align: center;
+        }
+        cursor: pointer;
+    }
+    img{
+        position: relative;
+        width: 35px;
+        height: 35px;
+        bottom: 9px;
+        left: 20px;
+    }
+}
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    background-image: url(https://down-vn.img.susercontent.com/file/sg-11134004-7rfez-m325h1qzjpc603);
+    background-color: rgb(255, 78, 0);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 0 auto;
+    min-height: 640px;
+    min-width: 1200px;
+    .main-content{
+        background-color: white;
+        position: relative;
+        width: 400px;
+        height: 428px;
+        right: 30px;
+        input {
+            width: auto;
+        }
+    }
+    
+}

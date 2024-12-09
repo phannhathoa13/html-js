@@ -4,21 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="userRegisterAccount.css">
     <title>Register</title>
 </head>
 
 <body>
-    <table class="table">
-        <label for="username">Username </label> <br>
-        <input type="username" id="username" name="username"><br>
-        <label for="password">Password</label><br>
-        <input type="password" id="password" name="password"><br>
-        <label for="confirmPassword">Confirm Password</label> <br>
-        <input type="password" id="confirmPassword" name="confirmPassword">
-    </table>
-    <br>
-    <button id="buttonRegister" onclick="registerAccount()">Register</button>
+        <div class="header">
+            <div class="content">
+                <img src="https://www.pngmart.com/files/12/Shopee-Logo-Transparent-PNG.png" alt="shoppeLogo">
+                <span class ="color"> Shoppe</span>
+                <span> Register</span>
+            </div>
+            <div class="helper">
+                <a href="">Do you need to help?</a>
+            </div>
+        </div>
+        <div class="main">
+            <div class="main-content">
+                <label for="phoneNumber">Register  </label>
+                <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number">
+                 <button id="buttonRegister" onclick="registerAccount()">Register</button>
+            </div>
+        </div>
+   
     <script src="userRegisterAccount.js"></script>
+
 
 
 
